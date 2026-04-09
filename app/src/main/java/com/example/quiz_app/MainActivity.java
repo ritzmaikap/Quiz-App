@@ -2,12 +2,13 @@ package com.example.quiz_app;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
 /*
  * this is the first screen of the app.
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText edtName;
     private Button btnStartQuiz;
+    private SwitchCompat switchTheme;
 
     private SharedPreferences preferences;
 
@@ -31,15 +33,21 @@ public class MainActivity extends AppCompatActivity {
 
         edtName = findViewById(R.id.edtName);
         btnStartQuiz = findViewById(R.id.btnStartQuiz);
+        switchTheme = findViewById(R.id.switchTheme);
 
         preferences = getSharedPreferences(PREF_FILE, MODE_PRIVATE);
 
-        /*
-         * this is restoring the previously saved name
-         * so when user comes back for a new quiz, the name is already filled in.
-         */
         String savedName = preferences.getString(KEY_USER_NAME, "");
         edtName.setText(savedName);
+
+        // theme setup
+        switchTheme.setChecked(ThemeHelper.isDarkMode(this));
+        applyThemeToMainScreen(ThemeHelper.isDarkMode(this));
+
+        switchTheme.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            ThemeHelper.saveTheme(MainActivity.this, isChecked);
+            applyThemeToMainScreen(isChecked);
+        });
 
         btnStartQuiz.setOnClickListener(v -> {
             String enteredName = edtName.getText().toString().trim();
@@ -49,14 +57,31 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
-            /*
-             * this stores the name locally for session persistence.
-             */
             preferences.edit().putString(KEY_USER_NAME, enteredName).apply();
 
             Intent intent = new Intent(MainActivity.this, PlayScreen.class);
             intent.putExtra("USER_NAME", enteredName);
             startActivity(intent);
         });
+    }
+
+    private void applyThemeToMainScreen(boolean isDark) {
+        if (isDark) {
+            findViewById(android.R.id.content).setBackgroundColor(Color.parseColor("#121212"));
+
+            edtName.setTextColor(Color.BLACK);
+            edtName.setHintTextColor(Color.GRAY);
+
+            btnStartQuiz.setTextColor(Color.WHITE);
+            btnStartQuiz.setBackgroundColor(Color.parseColor("#6750A4"));
+        } else {
+            findViewById(android.R.id.content).setBackgroundColor(Color.parseColor("#FFF8E7"));
+
+            edtName.setTextColor(Color.parseColor("#1C1B1F"));
+            edtName.setHintTextColor(Color.GRAY);
+
+            btnStartQuiz.setTextColor(Color.WHITE);
+            btnStartQuiz.setBackgroundColor(Color.parseColor("#6750A4"));
+        }
     }
 }
