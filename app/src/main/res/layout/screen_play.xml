@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- this text will show current progress like 1/5 -->
+        <TextView
+            android:id="@+id/txtProgressCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1/5"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <!-- this progress bar will be updated while moving through questions -->
+        <ProgressBar
+            android:id="@+id/progressQuiz"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            android:max="100"
+            android:progress="20"
+            android:progressDrawable="@drawable/bg_progress_track"
+            android:layout_marginBottom="24dp" />
+
+        <!-- this is the question title -->
+        <TextView
+            android:id="@+id/txtQuestionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Android question title:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp" />
+
+        <!-- this is the question description -->
+        <TextView
+            android:id="@+id/txtQuestionDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Question details go here"
+            android:textSize="16sp"
+            android:layout_marginBottom="30dp" />
+
+        <!-- option 1 -->
+        <Button
+            android:id="@+id/btnOption1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Answer"
+            android:textAllCaps="false"
+            android:background="@drawable/bg_option_idle"
+            android:layout_marginBottom="12dp" />
+
+        <!-- option 2 -->
+        <Button
+            android:id="@+id/btnOption2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Answer"
+            android:textAllCaps="false"
+            android:background="@drawable/bg_option_idle"
+            android:layout_marginBottom="12dp" />
+
+        <!-- option 3 -->
+        <Button
+            android:id="@+id/btnOption3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Answer"
+            android:textAllCaps="false"
+            android:background="@drawable/bg_option_idle"
+            android:layout_marginBottom="40dp" />
+
+        <!-- this button starts as submit and later changes to next -->
+        <Button
+            android:id="@+id/btnAction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:background="@drawable/bg_action_button" />
+
+    </LinearLayout>
+</ScrollView>
