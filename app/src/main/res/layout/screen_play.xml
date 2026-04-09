@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,7 +12,6 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <!-- this text will show current progress like 1/5 -->
         <TextView
             android:id="@+id/txtProgressCount"
             android:layout_width="wrap_content"
@@ -20,7 +21,6 @@
             android:textStyle="bold"
             android:layout_marginBottom="8dp" />
 
-        <!-- this progress bar will be updated while moving through questions -->
         <ProgressBar
             android:id="@+id/progressQuiz"
             style="?android:attr/progressBarStyleHorizontal"
@@ -31,7 +31,6 @@
             android:progressDrawable="@drawable/bg_progress_track"
             android:layout_marginBottom="24dp" />
 
-        <!-- this is the question title -->
         <TextView
             android:id="@+id/txtQuestionTitle"
             android:layout_width="wrap_content"
@@ -41,7 +40,6 @@
             android:textStyle="bold"
             android:layout_marginBottom="12dp" />
 
-        <!-- this is the question description -->
         <TextView
             android:id="@+id/txtQuestionDetail"
             android:layout_width="match_parent"
@@ -50,37 +48,36 @@
             android:textSize="16sp"
             android:layout_marginBottom="30dp" />
 
-        <!-- option 1 -->
         <Button
             android:id="@+id/btnOption1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Answer"
             android:textAllCaps="false"
-            android:background="@drawable/bg_option_idle"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@null"
             android:layout_marginBottom="12dp" />
 
-        <!-- option 2 -->
         <Button
             android:id="@+id/btnOption2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Answer"
             android:textAllCaps="false"
-            android:background="@drawable/bg_option_idle"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@null"
             android:layout_marginBottom="12dp" />
 
-        <!-- option 3 -->
         <Button
             android:id="@+id/btnOption3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Answer"
             android:textAllCaps="false"
-            android:background="@drawable/bg_option_idle"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@null"
             android:layout_marginBottom="40dp" />
 
-        <!-- this button starts as submit and later changes to next -->
         <Button
             android:id="@+id/btnAction"
             android:layout_width="match_parent"
@@ -89,5 +86,15 @@
             android:textAllCaps="false"
             android:background="@drawable/bg_action_button" />
 
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dark Mode"
+            android:layout_gravity="end"
+            android:layout_marginBottom="16dp" />
+
     </LinearLayout>
+
+
 </ScrollView>
